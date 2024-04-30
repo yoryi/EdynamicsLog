@@ -11,7 +11,13 @@ export type Routes = {
 export interface ButtonCameraProps {
   iconName?: string;
   color?: string;
+  onEvent?: (event: GestureResponderEvent) => void;
+}
+
+export interface ButtonMainProps {
   source?: PhotoFile | ImageSourcePropType;
   embled?: boolean;
+  onRecording?: () => void;
+  onEndRecording?: () => void;
   onEvent?: (event: GestureResponderEvent) => void;
 }

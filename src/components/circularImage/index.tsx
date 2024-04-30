@@ -1,7 +1,7 @@
 import {StyleSheet, View, TouchableOpacity, Image} from 'react-native';
-import {ButtonCameraProps} from '../../types';
+import {ButtonMainProps} from '../../types';
 
-const circularImage: React.FC<ButtonCameraProps> = ({
+const circularImage: React.FC<ButtonMainProps> = ({
   embled,
   onEvent,
   source,

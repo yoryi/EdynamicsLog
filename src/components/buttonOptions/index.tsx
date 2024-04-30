@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Colors } from '../../constants';
 import {ButtonCameraProps} from '../../types';
 
-const ButtonOptions: React.FC<ButtonCameraProps> = ({iconName, onEvent, props}) => {
+const ButtonOptions: React.FC<ButtonCameraProps> = ({iconName, onEvent}) => {
   const [isActive, setIsActive] = useState(false);
   const backgroundColor = isActive ? Colors.GREEN_APP : Colors.BLACK_50;
   const iconColor = isActive ? Colors.BLACK : Colors.WHITE;
@@ -17,7 +17,7 @@ const ButtonOptions: React.FC<ButtonCameraProps> = ({iconName, onEvent, props}) 
   const renderUI = () => {
     return (
       <TouchableOpacity
-        style={[styles.buttonOptions, {backgroundColor, ...props}]}
+        style={[styles.buttonOptions, {backgroundColor}]}
         onPress={handleEventButton}>
         <Icon name={iconName} size={20} color={iconColor} />
       </TouchableOpacity>
