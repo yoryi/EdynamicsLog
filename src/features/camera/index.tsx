@@ -4,7 +4,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {
   View,
   Text,
-  StyleSheet,
   ActivityIndicator,
   TouchableOpacity,
 } from 'react-native';
@@ -13,6 +12,7 @@ import {
   useCameraDevice,
   useCameraFormat,
 } from 'react-native-vision-camera';
+import styles from '../camera/styles';
 import {Colors} from '../../constants';
 import navigateRef from '../../navigateRef';
 import useCameraPermission from '../../hooks/useCameraPermission';
@@ -69,7 +69,7 @@ export default function App() {
 
   const navigateToPreviewPhoto = () => {
     let Details = {source, typeMedia: 'media'};
-    navigateRef.navigate('PreviewPhoto', Details);
+    return navigateRef.navigate('PreviewPhoto', Details);
   };
 
   //OnEvents Camera
@@ -150,51 +150,3 @@ export default function App() {
   };
   return renderUI();
 }
-
-const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-    backgroundColor: 'black',
-    flexDirection: 'column',
-  },
-  captureImage: {
-    width: 50,
-    height: 50,
-    borderRadius: 100,
-    resizeMode: 'stretch',
-  },
-  containerCamera: {
-    flex: 1,
-    backgroundColor: 'black',
-  },
-  Camera: {
-    height: '100%',
-  },
-  containerBarCamera: {
-    height: 100,
-    backgroundColor: 'black',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-    paddingLeft: 25,
-    paddingRight: 25,
-  },
-  containerOptions: {
-    height: 60,
-    flexDirection: 'row',
-    backgroundColor: 'black',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingRight: 20,
-    paddingLeft: 20,
-  },
-  buttonCamera: {
-    width: 50,
-    height: 50,
-    padding: 10,
-    borderRadius: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: Colors.BLACK_50,
-  },
-});
