@@ -130,16 +130,11 @@ export default function App() {
           <TouchableOpacity onPress={handlePreviewPhoto}>
             <Image
               source={source}
-              style={{
-                width: 50,
-                height: 50,
-                borderRadius: 100,
-                resizeMode: 'stretch',
-              }}
+              style={styles.captureImage}
             />
           </TouchableOpacity>
         ) : (
-          <View style={{width: 50, height: 50}} />
+          <View style={styles.captureImage} />
         )}
         <ButtonMain onEvent={onTakePhoto} />
         <TouchableOpacity style={styles.buttonCamera} onPress={onChangeCamera}>
@@ -167,6 +162,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'black',
     flexDirection: 'column',
+  },
+  captureImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 100,
+    resizeMode: 'stretch',
   },
   containerCamera: {
     flex: 1,
