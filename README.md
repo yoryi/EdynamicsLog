@@ -17,8 +17,9 @@ $ npm run ios
 $ npm run android
 
 ```
+
 ## Screenshot Aplicación
-![Imagen](https://i.ibb.co/ZKPgTps/emulador.png)
+![Imagen](https://i.ibb.co/ZKPgTps/emulador.png=300x800)
 
 
 ## Funcionalidades de la Aplicación
