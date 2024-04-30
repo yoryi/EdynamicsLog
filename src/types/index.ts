@@ -21,3 +21,7 @@ export interface ButtonMainProps {
   onEndRecording?: () => void;
   onEvent?: (event: GestureResponderEvent) => void;
 }
+
+export interface CounterRecordingProps {
+  counter?: boolean;
+}

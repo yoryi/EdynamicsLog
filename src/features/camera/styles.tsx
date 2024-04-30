@@ -1,4 +1,4 @@
-import { StyleSheet, ViewStyle, ImageStyle } from 'react-native';
+import {StyleSheet, ViewStyle, ImageStyle} from 'react-native';
 
 interface Styles {
   wrapper: ViewStyle;
@@ -8,6 +8,7 @@ interface Styles {
   containerBarCamera: ViewStyle;
   containerOptions: ViewStyle;
   buttonCamera: ViewStyle;
+  containerCounter: ViewStyle;
 }
 
 const styles: Styles = StyleSheet.create({
@@ -41,11 +42,9 @@ const styles: Styles = StyleSheet.create({
   containerOptions: {
     height: 60,
     flexDirection: 'row',
-    backgroundColor: 'black',
     alignItems: 'center',
+    backgroundColor: 'black',
     justifyContent: 'space-between',
-    paddingRight: 20,
-    paddingLeft: 20,
   },
   buttonCamera: {
     width: 50,
@@ -55,6 +54,12 @@ const styles: Styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'black',
+  },
+  containerCounter: {
+    width: '100%',
+    position: 'absolute',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

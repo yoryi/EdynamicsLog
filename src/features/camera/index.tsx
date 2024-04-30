@@ -17,6 +17,7 @@ import {
   ButtonMain,
   CircularImage,
   StatusBar,
+  CounterRecording,
 } from '../../components';
 
 export default function App() {
@@ -29,6 +30,7 @@ export default function App() {
   const [fps, setFps] = useState(30);
   const [HDR, setHDR] = useState(false);
   const [sound, setSound] = useState(false);
+  const [Counter, setCounter] = useState(false);
   const [flash, setFlash] = useState<'on' | 'off'>('off');
   const [typeMedia, setTypeMedia] = useState<'photo' | 'video'>('photo');
   const [capturedMedia, setCapturedMedia] = useState<
@@ -60,6 +62,7 @@ export default function App() {
       if (!camera.current) {
         throw new Error('Camera is not available!');
       }
+      setCounter(true);
       camera.current.startRecording({
         flash: flash,
         onRecordingError: error => {
@@ -79,6 +82,7 @@ export default function App() {
       if (!camera.current) {
         throw new Error('Camera is not available!');
       }
+      setCounter(false);
       await camera.current.stopRecording();
     } catch (e) {
       console.error('stop recording!', e);
@@ -125,11 +129,14 @@ export default function App() {
   const renderHeader = () => {
     return (
       <View style={styles.containerOptions}>
-        <View style={{flexDirection: 'row'}}>
+        <View style={styles.containerCounter}>
+          {Counter && <CounterRecording counter={Counter} />}
+        </View>
+        <View style={{flexDirection: 'row', paddingLeft: 15}}>
           <ButtonOptions iconName={'volume-up'} onEvent={onSound} />
           <ButtonOptions iconName={'60fps-select'} onEvent={onChangeFPS} />
         </View>
-        <View style={{flexDirection: 'row'}}>
+        <View style={{flexDirection: 'row', paddingRight: 15}}>
           <ButtonOptions iconName={'hdr-on'} onEvent={onChangeHDR} />
           <ButtonOptions iconName={'bolt'} onEvent={onChangeFlash} />
         </View>
