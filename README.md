@@ -20,4 +20,4 @@ $ npm run android
 
 Video Proyecto
 
-[Presentacion](https://streamable.com/l6u48v?src=player-page-share)
+[Link Video](https://streamable.com/l6u48v?src=player-page-share)
