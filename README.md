@@ -17,3 +17,7 @@ $ npm run ios
 $ npm run android
 
 ```
+
+Video Proyecto
+
+[Presentacion](https://streamable.com/l6u48v?src=player-page-share)
