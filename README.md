@@ -17,6 +17,9 @@ $ npm run ios
 $ npm run android
 
 ```
+## Screenshot Aplicación
+![Imagen](https://i.ibb.co/N7SMD7n/test.png=300x300)
+
 
 ## Funcionalidades de la Aplicación
 
