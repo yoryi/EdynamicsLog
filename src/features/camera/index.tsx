@@ -17,7 +17,7 @@ import {
 } from 'react-native-vision-camera';
 import useCameraPermission from '../../hooks/useCameraPermission';
 import navigateRef from '../../navigateRef';
-import {ButtonOptions} from '../../components';
+import {ButtonOptions, ButtonMain} from '../../components';
 import {Colors} from '../../constants';
 
 export default function App() {
@@ -141,7 +141,7 @@ export default function App() {
         ) : (
           <View style={{width: 50, height: 50}} />
         )}
-        <TouchableOpacity style={styles.buttonMain} onPress={onTakePhoto} />
+        <ButtonMain onEvent={onTakePhoto} />
         <TouchableOpacity style={styles.buttonCamera} onPress={onChangeCamera}>
           <Icon name={'sync'} size={25} color={Colors.WHITE} />
         </TouchableOpacity>
@@ -192,91 +192,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingRight: 20,
     paddingLeft: 20,
-  },
-  button: {
-    position: 'absolute',
-    bottom: 30,
-    padding: 35,
-    borderRadius: 100,
-    backgroundColor: 'white',
-    alignSelf: 'center',
-    borderWidth: 1,
-    borderColor: 'red',
-  },
-
-  buttonOptions: {
-    width: 33,
-    height: 33,
-    borderRadius: 40,
-    marginRight: 10,
-    backgroundColor: 'blue',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  buttonMain: {
-    width: 60,
-    height: 60,
-    borderWidth: 1,
-    padding: 10,
-    borderRadius: 40,
-    borderColor: 'white',
-    marginRight: 10,
-  },
-  buttonCircle: {
-    width: 40,
-    height: 40,
-    borderWidth: 1,
-    padding: 10,
-    borderRadius: 40,
-    marginRight: 10,
-    backgroundColor: 'blue',
-  },
-  buttonFlash: {
-    width: 25,
-    height: 25,
-    borderWidth: 1,
-    padding: 10,
-    borderRadius: 40,
-    borderColor: 'red',
-    marginRight: 10,
-    backgroundColor: 'blue',
-  },
-  buttonHR: {
-    width: 25,
-    height: 25,
-    borderWidth: 1,
-    padding: 10,
-    borderRadius: 40,
-    borderColor: 'red',
-    marginRight: 10,
-    backgroundColor: 'blue',
-  },
-  buttonSound: {
-    width: 25,
-    height: 25,
-    borderWidth: 1,
-    paddingRight: 10,
-    borderRadius: 40,
-    borderColor: 'red',
-    backgroundColor: 'blue',
-  },
-  buttonFPS: {
-    width: 25,
-    height: 25,
-    borderWidth: 1,
-    marginLeft: 10,
-    borderRadius: 40,
-    borderColor: 'red',
-    backgroundColor: 'blue',
-  },
-  buttonChangeCamera: {
-    width: 40,
-    height: 40,
-    borderWidth: 1,
-    padding: 10,
-    borderRadius: 40,
-    borderColor: 'red',
-    backgroundColor: 'red',
   },
   buttonCamera: {
     width: 50,

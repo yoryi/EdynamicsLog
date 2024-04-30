@@ -1,25 +1,11 @@
-import {useState} from 'react';
-import {StyleSheet, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { Colors } from '../../constants';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {ButtonCameraProps} from '../../types';
 
-const ButtonMain: React.FC<ButtonCameraProps> = ({iconName, onEvent}) => {
-  const [isActive, setIsActive] = useState(false);
-  const backgroundColor = isActive ? Colors.GREEN_APP : Colors.BLACK_50;
-  const iconColor = isActive ? Colors.BLACK : Colors.WHITE;
-
-  const handleEventButton = () => {
-    setIsActive(!isActive);
-    onEvent && onEvent();
-  };
-  
+const ButtonMain: React.FC<ButtonCameraProps> = ({onEvent}) => {
   const renderUI = () => {
     return (
-      <TouchableOpacity
-        style={[styles.buttonOptions, {backgroundColor}]}
-        onPress={handleEventButton}>
-        <Icon name={iconName} size={20} color={iconColor} />
+      <TouchableOpacity style={styles.buttonMain} onPress={onEvent}>
+        <View style={styles.buttonCircle}/>
       </TouchableOpacity>
     );
   };
@@ -28,13 +14,20 @@ const ButtonMain: React.FC<ButtonCameraProps> = ({iconName, onEvent}) => {
 
 export default ButtonMain;
 const styles = StyleSheet.create({
-  buttonOptions: {
-    width: 35,
-    height: 35,
+  buttonMain: {
+    width: 60,
+    height: 60,
+    borderWidth: 2,
     borderRadius: 40,
-    marginRight: 10,
-    backgroundColor: 'blue',
-    alignItems: 'center',
+    alignContent: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: 'white',
+  },
+  buttonCircle: {
+    width: 45,
+    height: 45,
+    borderRadius: 40,
+    backgroundColor: 'white',
   },
 });

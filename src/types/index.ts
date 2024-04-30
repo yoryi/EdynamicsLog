@@ -9,7 +9,7 @@ export type Routes = {
 };
 
 export interface ButtonCameraProps {
-  iconName: string;
+  iconName?: string;
   color?: string;
   onEvent?: (event: GestureResponderEvent) => void;
 }
