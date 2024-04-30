@@ -42,7 +42,7 @@ export default function App() {
     [capturedMedia],
   );
 
-  const _onMediaCaptured = useCallback(
+  const mediaCapturedFlag = useCallback(
     async (media: PhotoFile | VideoFile, type: 'photo' | 'video') => {
       if (type === 'photo' || (type === 'video' && typeof media !== 'string')) {
         setCapturedMedia(media);
@@ -64,7 +64,7 @@ export default function App() {
           console.error('Recording failed!', error);
         },
         onRecordingFinished: video => {
-          _onMediaCaptured(video, 'video');
+          mediaCapturedFlag(video, 'video');
           console.log(`Recording successfully finished!`);
         },
       });
@@ -94,7 +94,7 @@ export default function App() {
         flash: flashMode,
         enableShutterSound: sound,
       });
-      _onMediaCaptured(photo, 'photo');
+      mediaCapturedFlag(photo, 'photo');
     } catch (error) {
       console.error('Error taking photo:', error);
     }
