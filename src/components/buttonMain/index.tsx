@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
     borderColor: 'white',
   },
   buttonCircle: {
-    width: 45,
-    height: 45,
+    width: 50,
+    height: 50,
     borderRadius: 40,
     backgroundColor: 'white',
   },
