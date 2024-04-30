@@ -24,12 +24,13 @@ $ npm run android
 
 ## Funcionalidades de la Aplicación
 
+- Video
 - Cámara
 - Sonido
 - HDR (High Dynamic Range)
 - Flash
 - Cambio Camara
-- Previsualización de Fotos
+- Previsualización de Fotos, Videos
 - Activación 60FPS
 
 ## APK Aplicación
