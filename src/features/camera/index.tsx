@@ -67,7 +67,6 @@ export default function App() {
         },
         onRecordingFinished: video => {
           mediaCapturedFlag(video, 'video');
-          console.log(`Recording successfully finished!`);
         },
       });
     } catch (e) {
