@@ -18,12 +18,11 @@ import {
 import useCameraPermission from '../../hooks/useCameraPermission';
 import navigateRef from '../../navigateRef';
 import {ButtonOptions} from '../../components';
-import { Colors } from '../../constants';
+import {Colors} from '../../constants';
 
 export default function App() {
   const camera = useRef<Camera>(null);
   const [cameraPermission] = useCameraPermission();
-
   const [cameraPosition, setCameraPosition] = useState<'front' | 'back'>(
     'back',
   );
@@ -34,13 +33,13 @@ export default function App() {
   const [capturedMedia, setCapturedMedia] = useState<PhotoFile | null>(null);
   const [typeMedia, setTypeMedia] = useState<'photo' | 'video'>('photo');
 
-  const device = useCameraDevice(cameraPosition);
-  const supportsFlash = device?.hasFlash ?? false;
-  const configCamera = useCameraFormat(device, [{photoHdr: HDR, fps}]);
   const source = useMemo(
     () => ({uri: `file://${capturedMedia?.path}`}),
     [capturedMedia],
   );
+  const device = useCameraDevice(cameraPosition);
+  const supportsFlash = device?.hasFlash ?? false;
+  const configCamera = useCameraFormat(device, [{photoHdr: HDR, fps}]);
 
   const _onMediaCaptured = useCallback(
     async (media: PhotoFile, type: 'photo') => {
@@ -74,6 +73,12 @@ export default function App() {
     );
   };
 
+  const handlePreviewPhoto = () => {
+    let Details = {source, typeMedia: 'media'};
+    navigateRef.navigate('PreviewPhoto', Details);
+  };
+
+  //OnEvents Camera
   const onChangeCamera = () =>
     setCameraPosition(cameraPosition === 'front' ? 'back' : 'front');
   const onSound = () => setSound(!sound);
@@ -81,23 +86,9 @@ export default function App() {
   const onChangeHDR = () => setHDR(!HDR);
   const onChangeFPS = () => setFps(fps === 60 ? 30 : 60);
 
-  const handlePreviewPhoto = () => {
-    let Details = {source, typeMedia: 'media'};
-    navigateRef.navigate('PreviewPhoto', Details);
-  };
-
   const renderHeader = () => {
     return (
-      <View
-        style={{
-          height: 60,
-          flexDirection: 'row',
-          backgroundColor: 'black',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          paddingRight: 20,
-          paddingLeft: 20,
-        }}>
+      <View style={styles.containerOptions}>
         <View style={{flexDirection: 'row'}}>
           <ButtonOptions iconName={'volume-up'} onEvent={onSound} />
           <ButtonOptions iconName={'60fps-select'} onEvent={onChangeFPS} />
@@ -115,7 +106,7 @@ export default function App() {
     return (
       <View style={styles.containerCamera}>
         {!cameraPermission ? (
-          <ActivityIndicator size="large" color="#DBFF00" />
+          <ActivityIndicator size="large" color={Colors.GREEN_APP} />
         ) : (
           <Camera
             ref={camera}
@@ -132,18 +123,9 @@ export default function App() {
     );
   };
 
-  const renderFooterCamera = () => {
+  const renderBarCamera = () => {
     return (
-      <View
-        style={{
-          height: 100,
-          backgroundColor: 'black',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          flexDirection: 'row',
-          paddingLeft: 25,
-          paddingRight: 25,
-        }}>
+      <View style={styles.containerBarCamera}>
         {capturedMedia ? (
           <TouchableOpacity onPress={handlePreviewPhoto}>
             <Image
@@ -173,7 +155,7 @@ export default function App() {
         <StatusBar backgroundColor={'black'} barStyle={'light-content'} />
         {renderHeader()}
         {renderCameraApp()}
-        {renderFooterCamera()}
+        {renderBarCamera()}
       </View>
     );
   };
@@ -193,7 +175,24 @@ const styles = StyleSheet.create({
   Camera: {
     height: '100%',
   },
-
+  containerBarCamera: {
+    height: 100,
+    backgroundColor: 'black',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    paddingLeft: 25,
+    paddingRight: 25,
+  },
+  containerOptions: {
+    height: 60,
+    flexDirection: 'row',
+    backgroundColor: 'black',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingRight: 20,
+    paddingLeft: 20,
+  },
   button: {
     position: 'absolute',
     bottom: 30,

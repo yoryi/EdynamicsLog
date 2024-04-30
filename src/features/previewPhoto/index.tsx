@@ -22,7 +22,6 @@ const PreviewScreen: React.FC<{route: RouteProp<Params, 'Details'>}> = ({
   const {source, typeMedia} = route.params;
 
   const onBackNavegations = () => navigateRef.goBack();
-
   const renderHeader = () => {
     return (
       <View
