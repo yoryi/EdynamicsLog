@@ -1,17 +1,19 @@
 import {useState} from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
-import {ButtonCameraProps} from '../../types';
+import {ButtonMainProps} from '../../types';
 
-const ButtonMain: React.FC<ButtonCameraProps> = ({onEvent}) => {
+const ButtonMain: React.FC<ButtonMainProps> = ({onEvent, onRecording, onEndRecording}) => {
   const [isPressed, setIsPressed] = useState(false);
-  const startRecording = () => setIsPressed(true);
-  const stopRecording = () => setIsPressed(false);
+  
+  const startRecording = () => (
+    (setIsPressed(true), onRecording && onRecording(),
+    setTimeout(() => (setIsPressed(false), onEndRecording && onEndRecording()), 10000))
+  );
 
   const renderUI = () => {
     return (
       <TouchableOpacity
-        onPressIn={startRecording}
-        onPressOut={stopRecording}
+        onLongPress={startRecording}
         style={styles.buttonMain}
         onPress={onEvent}>
         <View
