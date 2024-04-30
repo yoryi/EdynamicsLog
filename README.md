@@ -19,7 +19,7 @@ $ npm run android
 ```
 
 ## Screenshot Aplicación
-![Imagen](https://i.ibb.co/ZKPgTps/emulador.png=300x300)
+![Imagen](https://i.ibb.co/gZq7rhR/android.png=300x300)
 
 
 ## Funcionalidades de la Aplicación
