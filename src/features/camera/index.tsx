@@ -52,26 +52,22 @@ export default function App() {
 
   const onTakePhoto = useCallback(async () => {
     try {
-      if (camera.current == null) throw new Error('Camera ref is null!');
+      if (!camera.current || typeof camera.current.takePhoto !== 'function') {
+        throw new Error('Camera is not available!');
+      }
+      const flashMode = supportsFlash ? flash : 'off';
       const photo = await camera.current.takePhoto({
-        flash: supportsFlash ? flash : 'off',
+        flash: flashMode,
         enableShutterSound: sound,
       });
       _onMediaCaptured(photo, 'photo');
-    } catch (e) {
-      console.error('Error: No Working!', e);
+    } catch (error) {
+      console.error('Error taking photo:', error);
     }
-  }, [camera, flash, sound, HDR]);
+  }, [camera, flash, sound, supportsFlash]);
 
-  const NoCameraErrorView = () => {
-    return (
-      <View style={styles.wrapper}>
-        <Text>Dispositivo no tiene camara</Text>
-      </View>
-    );
-  };
 
-  const handlePreviewPhoto = () => {
+  const navigateToPreviewPhoto = () => {
     let Details = {source, typeMedia: 'media'};
     navigateRef.navigate('PreviewPhoto', Details);
   };
@@ -83,6 +79,14 @@ export default function App() {
   const onChangeFlash = () => setFlash(flash === 'off' ? 'on' : 'off');
   const onChangeHDR = () => setHDR(!HDR);
   const onChangeFPS = () => setFps(fps === 60 ? 30 : 60);
+
+  const NoCameraErrorView = () => {
+    return (
+      <View style={styles.wrapper}>
+        <Text>Dispositivo no tiene camara</Text>
+      </View>
+    );
+  };
 
   const renderHeader = () => {
     return (
@@ -125,7 +129,7 @@ export default function App() {
     const embled = capturedMedia !== null && typeof capturedMedia !== 'undefined';
     return (
       <View style={styles.containerBarCamera}>
-        <CircularImage embled={embled} source={source} onEvent={handlePreviewPhoto} />
+        <CircularImage embled={embled} source={source} onEvent={navigateToPreviewPhoto} />
         <ButtonMain onEvent={onTakePhoto} />
         <TouchableOpacity style={styles.buttonCamera} onPress={onChangeCamera}>
           <Icon name={'sync'} size={25} color={Colors.WHITE} />
