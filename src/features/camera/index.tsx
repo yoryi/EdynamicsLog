@@ -26,10 +26,11 @@ export default function App() {
   const [cameraPosition, setCameraPosition] = useState<'front' | 'back'>(
     'back',
   );
-  const [flash, setFlash] = useState<'on' | 'off'>('off');
   const [fps, setFps] = useState(30);
-  const [sound, setSound] = useState(false);
   const [HDR, setHDR] = useState(false);
+  const [sound, setSound] = useState(false);
+  const [flash, setFlash] = useState<'on' | 'off'>('off');
+  const [typeMedia, setTypeMedia] = useState<'photo' | 'video'>('photo');
   const [capturedMedia, setCapturedMedia] = useState<
     PhotoFile | VideoFile | null
   >(null);
@@ -46,6 +47,7 @@ export default function App() {
     async (media: PhotoFile | VideoFile, type: 'photo' | 'video') => {
       if (type === 'photo' || (type === 'video' && typeof media !== 'string')) {
         setCapturedMedia(media);
+        setTypeMedia(type);
       } else {
         console.error('Media type is video or image');
       }
@@ -101,7 +103,7 @@ export default function App() {
   }, [camera, flash, sound, supportsFlash]);
 
   const navigateToPreviewPhoto = () => {
-    let Details = {source, typeMedia: 'media'};
+    let Details = {source, typeMedia};
     return navigateRef.navigate('PreviewPhoto', Details);
   };
 
