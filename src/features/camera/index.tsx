@@ -63,7 +63,7 @@ export default function App() {
     } catch (e) {
       console.error('Error: No Working!', e);
     }
-  }, [camera, flash, sound]);
+  }, [camera, flash, sound, HDR]);
 
   const NoCameraErrorView = () => {
     return (
