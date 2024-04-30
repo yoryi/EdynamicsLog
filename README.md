@@ -29,6 +29,7 @@ $ npm run android
 - Activación 60FPS
 
 
+
 Video Proyecto
 
 [Link Video](https://streamable.com/l6u48v?src=player-page-share)
