@@ -6,10 +6,10 @@ import {
   StatusBar,
   TouchableOpacity,
 } from 'react-native';
+import {Colors} from '../../constants';
 import navigateRef from '../../navigateRef';
 import {RouteProp} from '@react-navigation/native';
 import type {PhotoFile} from 'react-native-vision-camera';
-import {Colors} from '../../constants';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 type Params = {
@@ -20,19 +20,10 @@ const PreviewScreen: React.FC<{route: RouteProp<Params, 'Details'>}> = ({
   route,
 }) => {
   const {source, typeMedia} = route.params;
-
   const onBackNavegations = () => navigateRef.goBack();
   const renderHeader = () => {
     return (
-      <View
-        style={{
-          height: 80,
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          paddingLeft: 20,
-          paddingRight: 20,
-        }}>
+      <View style={styles.containerHeader}>
         <TouchableOpacity style={styles.buttonBack} onPress={onBackNavegations}>
           <Icon name={'navigate-before'} size={30} color={Colors.WHITE} />
         </TouchableOpacity>
@@ -90,6 +81,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: Colors.BLACK_50,
+  },
+  containerHeader: {
+    height: 80,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingLeft: 20,
+    paddingRight: 20,
   },
 });
 

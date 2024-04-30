@@ -4,22 +4,19 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {
   View,
   Text,
-  Image,
   StyleSheet,
   ActivityIndicator,
   TouchableOpacity,
-  SafeAreaView,
 } from 'react-native';
 import {
   Camera,
   useCameraDevice,
   useCameraFormat,
 } from 'react-native-vision-camera';
-import useCameraPermission from '../../hooks/useCameraPermission';
-import navigateRef from '../../navigateRef';
-import {ButtonOptions, ButtonMain} from '../../components';
 import {Colors} from '../../constants';
-import {StatusBar} from '../../components';
+import navigateRef from '../../navigateRef';
+import useCameraPermission from '../../hooks/useCameraPermission';
+import {ButtonOptions, ButtonMain, CircularImage, StatusBar} from '../../components';
 
 export default function App() {
   const camera = useRef<Camera>(null);
@@ -34,13 +31,13 @@ export default function App() {
   const [capturedMedia, setCapturedMedia] = useState<PhotoFile | null>(null);
   const [typeMedia, setTypeMedia] = useState<'photo' | 'video'>('photo');
 
+  const device = useCameraDevice(cameraPosition);
+  const supportsFlash = device?.hasFlash ?? false;
+  const configCamera = useCameraFormat(device, [{photoHdr: HDR, fps}]);
   const source = useMemo(
     () => ({uri: `file://${capturedMedia?.path}`}),
     [capturedMedia],
   );
-  const device = useCameraDevice(cameraPosition);
-  const supportsFlash = device?.hasFlash ?? false;
-  const configCamera = useCameraFormat(device, [{photoHdr: HDR, fps}]);
 
   const _onMediaCaptured = useCallback(
     async (media: PhotoFile, type: 'photo') => {
@@ -125,15 +122,10 @@ export default function App() {
   };
 
   const renderBarCamera = () => {
+    const embled = capturedMedia !== null && typeof capturedMedia !== 'undefined';
     return (
       <View style={styles.containerBarCamera}>
-        {capturedMedia ? (
-          <TouchableOpacity onPress={handlePreviewPhoto}>
-            <Image source={source} style={styles.captureImage} />
-          </TouchableOpacity>
-        ) : (
-          <View style={styles.captureImage} />
-        )}
+        <CircularImage embled={embled} source={source} onEvent={handlePreviewPhoto} />
         <ButtonMain onEvent={onTakePhoto} />
         <TouchableOpacity style={styles.buttonCamera} onPress={onChangeCamera}>
           <Icon name={'sync'} size={25} color={Colors.WHITE} />

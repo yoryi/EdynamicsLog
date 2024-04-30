@@ -6,7 +6,7 @@ const StatusNav: React.FC<ButtonCameraProps> = () => {
     return (
       <View style={styles.statusBar}>
         <SafeAreaView>
-          <StatusBar translucent backgroundColor={'black'} barStyle={'light-content'} />
+          <StatusBar backgroundColor={'black'} barStyle={'light-content'} />
         </SafeAreaView>
       </View>
     );
