@@ -9,7 +9,7 @@ import {
 import navigateRef from '../../navigateRef';
 import {RouteProp} from '@react-navigation/native';
 import type {PhotoFile} from 'react-native-vision-camera';
-import { Colors } from '../../constants';
+import {Colors} from '../../constants';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 type Params = {
@@ -33,7 +33,7 @@ const PreviewScreen: React.FC<{route: RouteProp<Params, 'Details'>}> = ({
           paddingLeft: 20,
           paddingRight: 20,
         }}>
-          <TouchableOpacity style={styles.buttonBack} onPress={onBackNavegations}>
+        <TouchableOpacity style={styles.buttonBack} onPress={onBackNavegations}>
           <Icon name={'navigate-before'} size={30} color={Colors.WHITE} />
         </TouchableOpacity>
       </View>
@@ -43,9 +43,7 @@ const PreviewScreen: React.FC<{route: RouteProp<Params, 'Details'>}> = ({
   const renderPreview = () => {
     return (
       <View style={styles.container}>
-        {source && (
-          <Image source={source} style={styles.imagePreview} />
-        )}
+        {source && <Image source={source} style={styles.imagePreview} />}
       </View>
     );
   };
@@ -53,7 +51,7 @@ const PreviewScreen: React.FC<{route: RouteProp<Params, 'Details'>}> = ({
   const rendeUI = () => {
     return (
       <View style={styles.container}>
-        <StatusBar backgroundColor={'black'} barStyle={'light-content'} />
+        <StatusBar />
         {renderHeader()}
         {renderPreview()}
       </View>

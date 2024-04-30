@@ -5,10 +5,10 @@ import {
   View,
   Text,
   Image,
-  StatusBar,
   StyleSheet,
   ActivityIndicator,
   TouchableOpacity,
+  SafeAreaView,
 } from 'react-native';
 import {
   Camera,
@@ -19,6 +19,7 @@ import useCameraPermission from '../../hooks/useCameraPermission';
 import navigateRef from '../../navigateRef';
 import {ButtonOptions, ButtonMain} from '../../components';
 import {Colors} from '../../constants';
+import {StatusBar} from '../../components';
 
 export default function App() {
   const camera = useRef<Camera>(null);
@@ -128,10 +129,7 @@ export default function App() {
       <View style={styles.containerBarCamera}>
         {capturedMedia ? (
           <TouchableOpacity onPress={handlePreviewPhoto}>
-            <Image
-              source={source}
-              style={styles.captureImage}
-            />
+            <Image source={source} style={styles.captureImage} />
           </TouchableOpacity>
         ) : (
           <View style={styles.captureImage} />
@@ -147,7 +145,7 @@ export default function App() {
   const renderUI = () => {
     return (
       <View style={styles.wrapper}>
-        <StatusBar backgroundColor={'black'} barStyle={'light-content'} />
+        <StatusBar />
         {renderHeader()}
         {renderCameraApp()}
         {renderBarCamera()}

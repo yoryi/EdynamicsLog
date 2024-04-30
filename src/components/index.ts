@@ -1,3 +1,4 @@
 import ButtonMain from './buttonMain';
 import ButtonOptions from './buttonOptions';
-export {ButtonMain, ButtonOptions};
+import StatusBar from './StatusBar';
+export {ButtonMain, ButtonOptions, StatusBar};
