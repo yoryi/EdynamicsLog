@@ -1,4 +1,4 @@
-import {useState, useCallback, useRef, useMemo} from 'react';
+import {useState, useCallback, useRef, useMemo, SetStateAction} from 'react';
 import type {PhotoFile, VideoFile} from 'react-native-vision-camera';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {View, Text, ActivityIndicator, TouchableOpacity} from 'react-native';
@@ -40,18 +40,28 @@ export default function App() {
   const device = useCameraDevice(cameraPosition);
   const supportsFlash = device?.hasFlash ?? false;
   const configCamera = useCameraFormat(device, [{photoHdr: HDR, fps}]);
-  const source = useMemo(
-    () => ({uri: `file://${capturedMedia?.path}`}),
-    [capturedMedia],
-  );
+  const mediaSource = useMemo(() => {
+    const mediaPath = capturedMedia?.path;
+    return {uri: mediaPath ? `file://${mediaPath}` : null};
+  }, [capturedMedia]);
 
-  const mediaCapturedFlag = useCallback(
-    async (media: PhotoFile | VideoFile, type: 'photo' | 'video') => {
-      if (type === 'photo' || (type === 'video' && typeof media !== 'string')) {
-        setCapturedMedia(media);
-        setTypeMedia(type);
-      } else {
-        console.error('Media type is video or image');
+  const captureMedia = useCallback(
+    async (
+      media: SetStateAction<PhotoFile | VideoFile | null>,
+      type: string | ((prevState: 'photo' | 'video') => 'photo' | 'video'),
+    ) => {
+      try {
+        if (
+          type === 'photo' ||
+          (type === 'video' && typeof media !== 'string')
+        ) {
+          setCapturedMedia(media);
+          setTypeMedia(type);
+        } else {
+          console.error('Invalid media type');
+        }
+      } catch (error) {
+        console.error('Error capturing media:', error);
       }
     },
     [],
@@ -59,64 +69,66 @@ export default function App() {
 
   const startRecording = useCallback(async () => {
     try {
-      if (!camera.current) {
-        throw new Error('Camera is not available!');
-      }
+      if (!camera.current) throw new Error('Camera is not available!');
       setCounter(true);
       camera.current.startRecording({
-        flash: flash,
-        onRecordingError: error => {
-          console.error('Recording failed!', error);
-        },
-        onRecordingFinished: video => {
-          mediaCapturedFlag(video, 'video');
-        },
+        flash,
+        onRecordingError: error => console.error('Recording failed!', error),
+        onRecordingFinished: video => captureMedia(video, 'video'),
       });
-    } catch (e) {
+    } catch (error) {
       console.error('stop recording!');
     }
   }, [camera, flash, sound, supportsFlash]);
+  
 
   const stopRecording = useCallback(async () => {
     try {
-      if (!camera.current) {
-        throw new Error('Camera is not available!');
-      }
+      if (!camera.current) throw new Error('Camera is not available!');
       setCounter(false);
       await camera.current.stopRecording();
-    } catch (e) {
-      console.error('stop recording!', e);
+    } catch (error) {
+      console.error('Error while stopping recording:', error);
     }
-  }, [camera, flash, sound, supportsFlash]);
+  }, [camera]);
+  
 
   const onTakePhoto = useCallback(async () => {
     try {
-      if (!camera.current || typeof camera.current.takePhoto !== 'function') {
-        throw new Error('Camera is not available!');
-      }
+      if (!camera.current || typeof camera.current.takePhoto !== 'function') throw new Error('Camera is not available!');
       const flashMode = supportsFlash ? flash : 'off';
       const photo = await camera.current.takePhoto({
         flash: flashMode,
         enableShutterSound: sound,
       });
-      mediaCapturedFlag(photo, 'photo');
+      captureMedia(photo, 'photo');
     } catch (error) {
       console.error('Error taking photo:', error);
     }
   }, [camera, flash, sound, supportsFlash]);
 
   const navigateToPreviewPhoto = () => {
-    let Details = {source, typeMedia};
+    let Details = {source: mediaSource, typeMedia};
     return navigateRef.navigate('PreviewPhoto', Details);
   };
 
-  //OnEvents Camera
+  //OnEvents
+  const toggleState = (
+    currentState: any,
+    alternateValue: string | boolean | number,
+    setState: any,
+  ) => {
+    setState(
+      currentState === alternateValue ? !alternateValue : alternateValue,
+    );
+  };
+
   const onChangeCamera = () =>
-    setCameraPosition(cameraPosition === 'front' ? 'back' : 'front');
-  const onSound = () => setSound(!sound);
-  const onChangeFlash = () => setFlash(flash === 'off' ? 'on' : 'off');
-  const onChangeHDR = () => setHDR(!HDR);
-  const onChangeFPS = () => setFps(fps === 60 ? 30 : 60);
+    toggleState(cameraPosition, 'front', setCameraPosition);
+  const onSound = () => toggleState(sound, false, setSound);
+  const onChangeFlash = () => toggleState(flash, 'off', setFlash);
+  const onChangeHDR = () => toggleState(HDR, false, setHDR);
+  const onChangeFPS = () => toggleState(fps, 30, setFps);
 
   const NoCameraErrorView = () => {
     return (
@@ -175,7 +187,7 @@ export default function App() {
       <View style={styles.containerBarCamera}>
         <CircularImage
           embled={embled}
-          source={source}
+          source={mediaSource}
           onEvent={navigateToPreviewPhoto}
         />
         <ButtonMain

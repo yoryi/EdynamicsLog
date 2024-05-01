@@ -15,7 +15,7 @@ export interface ButtonCameraProps {
 }
 
 export interface ButtonMainProps {
-  source?: PhotoFile | ImageSourcePropType;
+  source?: PhotoFile | ImageSourcePropType | any;
   embled?: boolean;
   onRecording?: () => void;
   onEndRecording?: () => void;
