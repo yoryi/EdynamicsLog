@@ -39,4 +39,4 @@ $ npm run android
 
 ## Video Aplicación
 
-[Link Video](https://streamable.com/l6u48v?src=player-page-share)
+[Video_Update](https://streamable.com/tsfu3d)
