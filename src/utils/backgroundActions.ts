@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {MediaCamera} from '../types/index';
 import {Dispatch, UnknownAction} from 'redux';
 import {updateObject} from '../redux/feature/photoQ';
@@ -9,10 +10,10 @@ const updateState = (objeto: any, state: string) => {
 };
 
 const sendObjectToAPI = async (dispatch: any, object: MediaCamera) => {
+  const netInfoState = await NetInfo.fetch();
   try {
     const currentState = object.state;
     if (currentState === 'pendiente' || currentState === 'error') {
-      const netInfoState = await NetInfo.fetch();
       if (!netInfoState.isConnected) {
         dispatch(
           updateObject({
@@ -27,19 +28,30 @@ const sendObjectToAPI = async (dispatch: any, object: MediaCamera) => {
           newState: updateState(object, 'procesando'),
         }),
       );
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      const response = {status: 200};
-      if (response.status === 200) {
-        dispatch(
-          updateObject({
-            id: object?.nameMedia,
-            newState: updateState(object, 'subida'),
-          }),
-        );
-      }
+      await new Promise(resolve => setTimeout(resolve, 1400));
+      const body = {...object};
+      const response = await axios.post(
+        'https://api.restful-api.dev/objects',
+        body,
+      );
+      dispatch(
+        updateObject({
+          id: object?.nameMedia,
+          newState: updateState(
+            object,
+            response.status === 200 ? 'subida' : 'error',
+          ),
+        }),
+      );
     }
   } catch (error) {
     console.error('Error sending object:', error);
+    dispatch(
+      updateObject({
+        id: object?.nameMedia,
+        newState: updateState(object, 'error'),
+      }),
+    );
   }
 };
 
