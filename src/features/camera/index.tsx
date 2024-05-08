@@ -1,6 +1,6 @@
-import {useState, useCallback, useRef, useMemo, SetStateAction} from 'react';
-import type {PhotoFile, VideoFile} from 'react-native-vision-camera';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {useState, useCallback, useRef, SetStateAction} from 'react';
+import type {PhotoFile, VideoFile} from 'react-native-vision-camera';
 import {View, Text, ActivityIndicator, TouchableOpacity} from 'react-native';
 import {
   Camera,
@@ -11,6 +11,8 @@ import {
 import styles from '../camera/styles';
 import {Colors} from '../../constants';
 import navigateRef from '../../navigateRef';
+import {useSelector, useDispatch} from 'react-redux';
+import {uploadImage} from '../../redux/feature/photoQ';
 import useCameraPermission from '../../hooks/useCameraPermission';
 import {
   ButtonOptions,
@@ -19,11 +21,14 @@ import {
   StatusBar,
   CounterRecording,
 } from '../../components';
+import {MediaCamera} from '../../types';
 
 export default function App() {
+  const dispatch = useDispatch();
   const camera = useRef<Camera>(null);
   const microphone = useMicrophonePermission();
   const [cameraPermission] = useCameraPermission();
+  const state = useSelector(state => state?.photoQ)?.listImage;
   const [cameraPosition, setCameraPosition] = useState<'front' | 'back'>(
     'back',
   );
@@ -32,18 +37,9 @@ export default function App() {
   const [sound, setSound] = useState(false);
   const [Counter, setCounter] = useState(false);
   const [flash, setFlash] = useState<'on' | 'off'>('off');
-  const [typeMedia, setTypeMedia] = useState<'photo' | 'video'>('photo');
-  const [capturedMedia, setCapturedMedia] = useState<
-    PhotoFile | VideoFile | null
-  >(null);
-
   const device = useCameraDevice(cameraPosition);
   const supportsFlash = device?.hasFlash ?? false;
   const configCamera = useCameraFormat(device, [{photoHdr: HDR, fps}]);
-  const mediaSource = useMemo(() => {
-    const mediaPath = capturedMedia?.path;
-    return {uri: mediaPath ? `file://${mediaPath}` : null};
-  }, [capturedMedia]);
 
   const captureMedia = useCallback(
     async (
@@ -55,8 +51,14 @@ export default function App() {
           type === 'photo' ||
           (type === 'video' && typeof media !== 'string')
         ) {
-          setCapturedMedia(media);
-          setTypeMedia(type);
+          const {path}: PhotoFile | VideoFile | any = media;
+          const upload: MediaCamera = {
+            typeMedia: type,
+            state: 'pendiente',
+            pathMedia: `file://${path}`,
+            nameMedia: 'SE' + Math.random().toString().slice(2, 8),
+          };
+          dispatch(uploadImage(upload));
         } else {
           console.error('Invalid media type');
         }
@@ -80,7 +82,6 @@ export default function App() {
       console.error('stop recording!');
     }
   }, [camera, flash, sound, supportsFlash]);
-  
 
   const stopRecording = useCallback(async () => {
     try {
@@ -91,11 +92,11 @@ export default function App() {
       console.error('Error while stopping recording:', error);
     }
   }, [camera]);
-  
 
   const onTakePhoto = useCallback(async () => {
     try {
-      if (!camera.current || typeof camera.current.takePhoto !== 'function') throw new Error('Camera is not available!');
+      if (!camera.current || typeof camera.current.takePhoto !== 'function')
+        throw new Error('Camera is not available!');
       const flashMode = supportsFlash ? flash : 'off';
       const photo = await camera.current.takePhoto({
         flash: flashMode,
@@ -108,8 +109,7 @@ export default function App() {
   }, [camera, flash, sound, supportsFlash]);
 
   const navigateToPreviewPhoto = () => {
-    let Details = {source: mediaSource, typeMedia};
-    return navigateRef.navigate('PreviewPhoto', Details);
+    return navigateRef.navigate('PhotoQ');
   };
 
   //OnEvents
@@ -181,13 +181,13 @@ export default function App() {
   };
 
   const renderBarCamera = () => {
-    const embled =
-      capturedMedia !== null && typeof capturedMedia !== 'undefined';
+    const index = state.length;
+    const source = state[index - 1]?.pathMedia;
     return (
       <View style={styles.containerBarCamera}>
         <CircularImage
-          embled={embled}
-          source={mediaSource}
+          embled={index}
+          source={source}
           onEvent={navigateToPreviewPhoto}
         />
         <ButtonMain

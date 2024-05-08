@@ -11,7 +11,7 @@ const circularImage: React.FC<ButtonMainProps> = ({
       <>
         {embled ? (
           <TouchableOpacity onPress={onEvent}>
-            <Image source={source} style={styles.captureImage} />
+            <Image source={{uri: source}} style={styles.captureImage} />
           </TouchableOpacity>
         ) : (
           <View style={styles.captureImage} />

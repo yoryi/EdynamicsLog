@@ -17,7 +17,7 @@ const goBack = () => {
   }
 };
 
-const navigate = (name: string, params: any) => {
+const navigate = (name: string, params?: any) => {
   if (navigator) {
     navigator.dispatch(
       CommonActions.navigate({

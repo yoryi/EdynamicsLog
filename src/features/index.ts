@@ -1,3 +1,3 @@
 import Camera from './camera';
-import PreviewPhoto from './previewCamera';
-export {Camera, PreviewPhoto};
+import PhotoQ from './photoQ';
+export {Camera, PhotoQ};
