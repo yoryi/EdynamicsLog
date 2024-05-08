@@ -35,7 +35,7 @@ $ npm run android
 - Activación 60FPS
 
 ## APK Aplicación
-[Descarga Aqui](https://drive.google.com/file/d/1NrJuNS11Stzbj6hkSpa9k7zh0IGFwooJ/view?usp=sharing)
+[Descargar](https://drive.google.com/file/d/1RNyZqtMKfykWwitI3VK4n3j7zkxnf45l/view?usp=sharing)
 
 
 ## Video Aplicación
