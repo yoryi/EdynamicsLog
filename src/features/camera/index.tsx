@@ -73,8 +73,9 @@ export default function App() {
     try {
       if (!camera.current) throw new Error('Camera is not available!');
       setCounter(true);
+      const flashMode = supportsFlash ? flash : 'off';
       camera.current.startRecording({
-        flash,
+        flash: flashMode,
         onRecordingError: error => console.error('Recording failed!', error),
         onRecordingFinished: video => captureMedia(video, 'video'),
       });
