@@ -9,7 +9,7 @@ const photoQSlice = createSlice({
   name: 'photoQ',
   initialState,
   reducers: {
-    uploadObject(state, action: PayloadAction<MediaCamera>) {
+    uploadImage(state, action: PayloadAction<MediaCamera>) {
       state.listImage.push(action.payload);
     },
     updateObject(state, action) {
