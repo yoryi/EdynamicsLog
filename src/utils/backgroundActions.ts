@@ -28,7 +28,7 @@ const sendObjectToAPI = async (dispatch: any, object: MediaCamera) => {
           newState: updateState(object, 'procesando'),
         }),
       );
-      await new Promise(resolve => setTimeout(resolve, 1400));
+      await new Promise(resolve => setTimeout(resolve, 1200));
       const body = {...object};
       const response = await axios.post(
         'https://api.restful-api.dev/objects',
