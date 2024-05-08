@@ -41,4 +41,4 @@ $ npm run android
 
 ## Video Aplicación
 
-[Video_Update](https://streamable.com/tsfu3d)
+[Video](https://youtu.be/iWedsgGUndw)
