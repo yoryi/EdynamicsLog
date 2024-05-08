@@ -20,6 +20,7 @@ $ npm run android
 
 ## Screenshot Aplicación
 ![Imagen](https://i.ibb.co/gZq7rhR/android.png=900x900)
+![Imagen](https://i.ibb.co/tYGqfgL/PHOTOQ.png=900x900)
 
 
 ## Funcionalidades de la Aplicación
