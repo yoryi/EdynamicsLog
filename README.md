@@ -41,4 +41,4 @@ $ npm run android
 
 ## Video Aplicación
 
-[Video](https://youtu.be/iWedsgGUndw)
+[Video](https://www.youtube.com/watch?v=iWedsgGUndw)
