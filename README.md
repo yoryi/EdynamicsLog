@@ -33,6 +33,7 @@ $ npm run android
 - Cambio Camara
 - Previsualización de Fotos, Videos
 - Activación 60FPS
+- Vista PhotoQ
 
 ## APK Aplicación
 [Descargar](https://drive.google.com/file/d/1RNyZqtMKfykWwitI3VK4n3j7zkxnf45l/view?usp=sharing)
