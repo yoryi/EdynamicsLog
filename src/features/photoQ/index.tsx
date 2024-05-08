@@ -25,7 +25,7 @@ const PhotoQScreen = () => {
   const onStartTask = () => {
     onStartTaskBackground(dispatch, state);
   };
-  
+
   const getBackgroundColor = (state: ItemState | string): string => {
     switch (state) {
       case 'pendiente':
@@ -60,9 +60,7 @@ const PhotoQScreen = () => {
             {state?.length ?? 0} archivos en cola
           </Text>
         </View>
-        <TouchableOpacity
-          style={styles.buttonUpload}
-          onPress={onStartTask}>
+        <TouchableOpacity style={styles.buttonUpload} onPress={onStartTask}>
           <Text style={styles.titleBotton}>Cargar Todo</Text>
         </TouchableOpacity>
       </View>

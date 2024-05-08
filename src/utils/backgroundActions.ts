@@ -45,7 +45,6 @@ const sendObjectToAPI = async (dispatch: any, object: MediaCamera) => {
       );
     }
   } catch (error) {
-    console.error('Error sending object:', error);
     dispatch(
       updateObject({
         id: object?.nameMedia,
