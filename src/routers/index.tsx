@@ -10,15 +10,13 @@ export function Routers(): React.ReactElement | null {
   const Stack = createNativeStackNavigator<Routes>();
   return (
     <GestureHandlerRootView style={styles.root}>
-       <NavigationContainer
-          ref={navigator => {
-            navigateRef.setNavigator(navigator);
-          }}>
+      <NavigationContainer
+        ref={navigator => {
+          navigateRef.setNavigator(navigator);
+        }}>
         <Stack.Navigator
           screenOptions={{
             headerShown: false,
-            statusBarStyle: 'dark',
-            animationTypeForReplace: 'pop',
           }}
           initialRouteName={'Camera'}>
           <Stack.Screen name={'Camera'} component={Camera} />

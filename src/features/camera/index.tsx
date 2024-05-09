@@ -29,7 +29,7 @@ import {
 } from '../../components';
 import {MediaCamera} from '../../types';
 
-export default function App() {
+const CameraScreen = () => {
   const dispatch = useDispatch();
   const camera = useRef<Camera>(null);
   const microphone = useMicrophonePermission();
@@ -209,4 +209,5 @@ export default function App() {
     );
   };
   return renderUI();
-}
+};
+export default CameraScreen;
