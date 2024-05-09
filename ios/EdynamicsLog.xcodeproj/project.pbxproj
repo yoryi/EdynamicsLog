@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* EdynamicsLogTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* EdynamicsLogTests.m */; };
+		0F03B4556F8D6E00C64A9CA5 /* libPods-EdynamicsLog-EdynamicsLogTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4EF135454FEE7FD9D893DF /* libPods-EdynamicsLog-EdynamicsLogTests.a */; };
 		117285952BE114B100809B6D /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 117285942BE114B100809B6D /* Fonts */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		52F579745744A6F215709361 /* libPods-EdynamicsLog-EdynamicsLogTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB1D49961E081B31228737C4 /* libPods-EdynamicsLog-EdynamicsLogTests.a */; };
-		781C57A1D6C43788F757EF9F /* libPods-EdynamicsLog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F39361824917362C16B7B58A /* libPods-EdynamicsLog.a */; };
+		1BC34F98A4512FEA73732BE8 /* libPods-EdynamicsLog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A8964B78A9E9756382D3BD6 /* libPods-EdynamicsLog.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +31,7 @@
 		00E356EE1AD99517003FC87E /* EdynamicsLogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EdynamicsLogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* EdynamicsLogTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EdynamicsLogTests.m; sourceTree = "<group>"; };
+		0A8964B78A9E9756382D3BD6 /* libPods-EdynamicsLog.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EdynamicsLog.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		117285942BE114B100809B6D /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = "../node_modules/react-native-vector-icons/Fonts"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* EdynamicsLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EdynamicsLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = EdynamicsLog/AppDelegate.h; sourceTree = "<group>"; };
@@ -39,14 +40,13 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = EdynamicsLog/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = EdynamicsLog/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = EdynamicsLog/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		273E0ACAD7B18CDF68880F79 /* Pods-EdynamicsLog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EdynamicsLog.debug.xcconfig"; path = "Target Support Files/Pods-EdynamicsLog/Pods-EdynamicsLog.debug.xcconfig"; sourceTree = "<group>"; };
+		5A4C2092FB6E65F4F47BA103 /* Pods-EdynamicsLog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EdynamicsLog.release.xcconfig"; path = "Target Support Files/Pods-EdynamicsLog/Pods-EdynamicsLog.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = EdynamicsLog/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8EEF8662DE6C6A3595A6107F /* Pods-EdynamicsLog-EdynamicsLogTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EdynamicsLog-EdynamicsLogTests.release.xcconfig"; path = "Target Support Files/Pods-EdynamicsLog-EdynamicsLogTests/Pods-EdynamicsLog-EdynamicsLogTests.release.xcconfig"; sourceTree = "<group>"; };
-		AB1D49961E081B31228737C4 /* libPods-EdynamicsLog-EdynamicsLogTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EdynamicsLog-EdynamicsLogTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BD9D40E87E68576C04065389 /* Pods-EdynamicsLog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EdynamicsLog.release.xcconfig"; path = "Target Support Files/Pods-EdynamicsLog/Pods-EdynamicsLog.release.xcconfig"; sourceTree = "<group>"; };
+		B39C4C5E14543D1F26F9F7CD /* Pods-EdynamicsLog-EdynamicsLogTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EdynamicsLog-EdynamicsLogTests.release.xcconfig"; path = "Target Support Files/Pods-EdynamicsLog-EdynamicsLogTests/Pods-EdynamicsLog-EdynamicsLogTests.release.xcconfig"; sourceTree = "<group>"; };
+		CFA643C90CC250A9DAF6CF0A /* Pods-EdynamicsLog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EdynamicsLog.debug.xcconfig"; path = "Target Support Files/Pods-EdynamicsLog/Pods-EdynamicsLog.debug.xcconfig"; sourceTree = "<group>"; };
+		D3E22B83783CD12A469C1454 /* Pods-EdynamicsLog-EdynamicsLogTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EdynamicsLog-EdynamicsLogTests.debug.xcconfig"; path = "Target Support Files/Pods-EdynamicsLog-EdynamicsLogTests/Pods-EdynamicsLog-EdynamicsLogTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F39361824917362C16B7B58A /* libPods-EdynamicsLog.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EdynamicsLog.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FE9DDB6C4A741774FE090375 /* Pods-EdynamicsLog-EdynamicsLogTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EdynamicsLog-EdynamicsLogTests.debug.xcconfig"; path = "Target Support Files/Pods-EdynamicsLog-EdynamicsLogTests/Pods-EdynamicsLog-EdynamicsLogTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FF4EF135454FEE7FD9D893DF /* libPods-EdynamicsLog-EdynamicsLogTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EdynamicsLog-EdynamicsLogTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52F579745744A6F215709361 /* libPods-EdynamicsLog-EdynamicsLogTests.a in Frameworks */,
+				0F03B4556F8D6E00C64A9CA5 /* libPods-EdynamicsLog-EdynamicsLogTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,7 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				781C57A1D6C43788F757EF9F /* libPods-EdynamicsLog.a in Frameworks */,
+				1BC34F98A4512FEA73732BE8 /* libPods-EdynamicsLog.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,8 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				F39361824917362C16B7B58A /* libPods-EdynamicsLog.a */,
-				AB1D49961E081B31228737C4 /* libPods-EdynamicsLog-EdynamicsLogTests.a */,
+				0A8964B78A9E9756382D3BD6 /* libPods-EdynamicsLog.a */,
+				FF4EF135454FEE7FD9D893DF /* libPods-EdynamicsLog-EdynamicsLogTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -145,10 +145,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				273E0ACAD7B18CDF68880F79 /* Pods-EdynamicsLog.debug.xcconfig */,
-				BD9D40E87E68576C04065389 /* Pods-EdynamicsLog.release.xcconfig */,
-				FE9DDB6C4A741774FE090375 /* Pods-EdynamicsLog-EdynamicsLogTests.debug.xcconfig */,
-				8EEF8662DE6C6A3595A6107F /* Pods-EdynamicsLog-EdynamicsLogTests.release.xcconfig */,
+				CFA643C90CC250A9DAF6CF0A /* Pods-EdynamicsLog.debug.xcconfig */,
+				5A4C2092FB6E65F4F47BA103 /* Pods-EdynamicsLog.release.xcconfig */,
+				D3E22B83783CD12A469C1454 /* Pods-EdynamicsLog-EdynamicsLogTests.debug.xcconfig */,
+				B39C4C5E14543D1F26F9F7CD /* Pods-EdynamicsLog-EdynamicsLogTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -160,12 +160,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "EdynamicsLogTests" */;
 			buildPhases = (
-				49E602B8113331180A30CD2B /* [CP] Check Pods Manifest.lock */,
+				FE1A6E59D8095C836EF60CD0 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				CCFAF39BE4A80735D33FF045 /* [CP] Embed Pods Frameworks */,
-				D085BE1D262B31C94696B32B /* [CP] Copy Pods Resources */,
+				4FB7EE0AED9E5F00B7997862 /* [CP] Embed Pods Frameworks */,
+				13A7F951214A2289A8E66509 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -181,13 +181,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "EdynamicsLog" */;
 			buildPhases = (
-				42C154F68608E1ABDEC143F5 /* [CP] Check Pods Manifest.lock */,
+				EE59703FFE5FCAE83D324F51 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				85DF76AA8D2EBAA40DD8E05B /* [CP] Embed Pods Frameworks */,
-				6E2B8522545003F0649C2F39 /* [CP] Copy Pods Resources */,
+				99CE4E8B09D795DA07272242 /* [CP] Embed Pods Frameworks */,
+				B019AC0B742EE423147D7766 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -271,7 +271,75 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		42C154F68608E1ABDEC143F5 /* [CP] Check Pods Manifest.lock */ = {
+		13A7F951214A2289A8E66509 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EdynamicsLog-EdynamicsLogTests/Pods-EdynamicsLog-EdynamicsLogTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EdynamicsLog-EdynamicsLogTests/Pods-EdynamicsLog-EdynamicsLogTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EdynamicsLog-EdynamicsLogTests/Pods-EdynamicsLog-EdynamicsLogTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4FB7EE0AED9E5F00B7997862 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EdynamicsLog-EdynamicsLogTests/Pods-EdynamicsLog-EdynamicsLogTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EdynamicsLog-EdynamicsLogTests/Pods-EdynamicsLog-EdynamicsLogTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EdynamicsLog-EdynamicsLogTests/Pods-EdynamicsLog-EdynamicsLogTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		99CE4E8B09D795DA07272242 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EdynamicsLog/Pods-EdynamicsLog-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EdynamicsLog/Pods-EdynamicsLog-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EdynamicsLog/Pods-EdynamicsLog-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B019AC0B742EE423147D7766 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EdynamicsLog/Pods-EdynamicsLog-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EdynamicsLog/Pods-EdynamicsLog-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EdynamicsLog/Pods-EdynamicsLog-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE59703FFE5FCAE83D324F51 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -293,7 +361,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		49E602B8113331180A30CD2B /* [CP] Check Pods Manifest.lock */ = {
+		FE1A6E59D8095C836EF60CD0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -313,74 +381,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6E2B8522545003F0649C2F39 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EdynamicsLog/Pods-EdynamicsLog-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EdynamicsLog/Pods-EdynamicsLog-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EdynamicsLog/Pods-EdynamicsLog-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		85DF76AA8D2EBAA40DD8E05B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EdynamicsLog/Pods-EdynamicsLog-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EdynamicsLog/Pods-EdynamicsLog-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EdynamicsLog/Pods-EdynamicsLog-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CCFAF39BE4A80735D33FF045 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EdynamicsLog-EdynamicsLogTests/Pods-EdynamicsLog-EdynamicsLogTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EdynamicsLog-EdynamicsLogTests/Pods-EdynamicsLog-EdynamicsLogTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EdynamicsLog-EdynamicsLogTests/Pods-EdynamicsLog-EdynamicsLogTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D085BE1D262B31C94696B32B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EdynamicsLog-EdynamicsLogTests/Pods-EdynamicsLog-EdynamicsLogTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EdynamicsLog-EdynamicsLogTests/Pods-EdynamicsLog-EdynamicsLogTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EdynamicsLog-EdynamicsLogTests/Pods-EdynamicsLog-EdynamicsLogTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -416,7 +416,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FE9DDB6C4A741774FE090375 /* Pods-EdynamicsLog-EdynamicsLogTests.debug.xcconfig */;
+			baseConfigurationReference = D3E22B83783CD12A469C1454 /* Pods-EdynamicsLog-EdynamicsLogTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -443,7 +443,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8EEF8662DE6C6A3595A6107F /* Pods-EdynamicsLog-EdynamicsLogTests.release.xcconfig */;
+			baseConfigurationReference = B39C4C5E14543D1F26F9F7CD /* Pods-EdynamicsLog-EdynamicsLogTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -467,7 +467,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 273E0ACAD7B18CDF68880F79 /* Pods-EdynamicsLog.debug.xcconfig */;
+			baseConfigurationReference = CFA643C90CC250A9DAF6CF0A /* Pods-EdynamicsLog.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -485,7 +485,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.parku.dev;
 				PRODUCT_NAME = EdynamicsLog;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -495,7 +495,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BD9D40E87E68576C04065389 /* Pods-EdynamicsLog.release.xcconfig */;
+			baseConfigurationReference = 5A4C2092FB6E65F4F47BA103 /* Pods-EdynamicsLog.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -512,7 +512,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.parku.dev;
 				PRODUCT_NAME = EdynamicsLog;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -570,7 +570,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD = "";
 				LDPLUSPLUS = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -648,7 +648,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD = "";
 				LDPLUSPLUS = "";
 				LD_RUNPATH_SEARCH_PATHS = (

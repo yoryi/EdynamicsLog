@@ -1,7 +1,13 @@
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useState, useCallback, useRef, SetStateAction} from 'react';
 import type {PhotoFile, VideoFile} from 'react-native-vision-camera';
-import {View, Text, ActivityIndicator, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  ActivityIndicator,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
 import {
   Camera,
   useCameraDevice,
@@ -113,23 +119,12 @@ export default function App() {
     return navigateRef.navigate('PhotoQ');
   };
 
-  //OnEvents
-  const toggleState = (
-    currentState: any,
-    alternateValue: string | boolean | number,
-    setState: any,
-  ) => {
-    setState(
-      currentState === alternateValue ? !alternateValue : alternateValue,
-    );
-  };
-
+  const onSound = () => setSound(!sound);
+  const onChangeHDR = () => setHDR(!HDR);
+  const onChangeFPS = () => setFps(fps == 30 ? 60 : 30);
+  const onChangeFlash = () => setFlash(flash == 'off' ? 'on' : 'off');
   const onChangeCamera = () =>
-    toggleState(cameraPosition, 'front', setCameraPosition);
-  const onSound = () => toggleState(sound, false, setSound);
-  const onChangeFlash = () => toggleState(flash, 'off', setFlash);
-  const onChangeHDR = () => toggleState(HDR, false, setHDR);
-  const onChangeFPS = () => toggleState(fps, 30, setFps);
+    setCameraPosition(cameraPosition == 'back' ? 'front' : 'back');
 
   const NoCameraErrorView = () => {
     return (
@@ -205,12 +200,12 @@ export default function App() {
 
   const renderUI = () => {
     return (
-      <View style={styles.wrapper}>
+      <SafeAreaView style={styles.wrapper}>
         <StatusBar />
         {renderHeader()}
         {renderCameraApp()}
         {renderBarCamera()}
-      </View>
+      </SafeAreaView>
     );
   };
   return renderUI();

@@ -7,11 +7,12 @@ import {
   StatusBar,
   ImageProps,
   TouchableOpacity,
+  SafeAreaView,
 } from 'react-native';
 import styles from './styles';
 import {Colors} from '../../constants';
-import Video, {VideoProperties} from 'react-native-video';
 import navigateRef from '../../navigateRef';
+import Video, {VideoProperties} from 'react-native-video';
 import {useSelector, useDispatch} from 'react-redux';
 import type {PhotoFile, VideoFile} from 'react-native-vision-camera';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -21,7 +22,9 @@ import {onStartTaskBackground} from '../../utils/backgroundActions';
 const PhotoQScreen = () => {
   const dispatch = useDispatch();
   const state = useSelector(state => state?.photoQ)?.listImage;
-  const onBackNavegations = () => navigateRef?.goBack();
+  const onBackNavegations = () => {
+    return navigateRef.navigate('Camera');
+  };
   const onStartTask = () => {
     onStartTaskBackground(dispatch, state);
   };
@@ -131,12 +134,12 @@ const PhotoQScreen = () => {
 
   const rendeUI = () => {
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <StatusBar />
         {renderHeader()}
         {renderOptions()}
         {renderList()}
-      </View>
+      </SafeAreaView>
     );
   };
   return rendeUI();
