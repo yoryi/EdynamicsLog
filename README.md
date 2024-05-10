@@ -36,9 +36,10 @@ $ npm run android
 - Vista PhotoQ
 
 ## APK Aplicación
-[Descargar](https://drive.google.com/file/d/1RNyZqtMKfykWwitI3VK4n3j7zkxnf45l/view?usp=sharing)
+[Descargar APK](https://drive.google.com/file/d/1RNyZqtMKfykWwitI3VK4n3j7zkxnf45l/view?usp=sharing)
 
 
 ## Video Aplicación
 
-[Video](https://www.youtube.com/watch?v=iWedsgGUndw)
+[Video ANDROID](https://www.youtube.com/watch?v=iWedsgGUndw)
+[Video IOS](https://www.youtube.com/shorts/CTBTrqZhsco)
