@@ -24,7 +24,6 @@ import {
   ButtonOptions,
   ButtonMain,
   CircularImage,
-  StatusBar,
   CounterRecording,
 } from '../../components';
 import {MediaCamera} from '../../types';
@@ -201,7 +200,6 @@ const CameraScreen = () => {
   const renderUI = () => {
     return (
       <SafeAreaView style={styles.wrapper}>
-        <StatusBar />
         {renderHeader()}
         {renderCameraApp()}
         {renderBarCamera()}

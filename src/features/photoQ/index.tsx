@@ -17,7 +17,6 @@ import type {PhotoFile, VideoFile} from 'react-native-vision-camera';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {ItemState, MediaCamera} from '../../types';
 import {onStartTaskBackground} from '../../utils/backgroundActions';
-import {StatusBar} from '../../components';
 
 const PhotoQScreen = () => {
   const dispatch = useDispatch();
@@ -135,7 +134,6 @@ const PhotoQScreen = () => {
   const rendeUI = () => {
     return (
       <SafeAreaView style={styles.container}>
-        <StatusBar />
         {renderHeader()}
         {renderOptions()}
         {renderList()}
