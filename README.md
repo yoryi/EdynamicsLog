@@ -20,6 +20,7 @@ $ npm run android
 
 ## Screenshot Aplicación
 ![Imagen](https://i.ibb.co/1sBngZ9/home.png)
+![Imagen](https://i.ibb.co/9tMpgWW/PHOTOQ.png)
 ![Imagen](https://i.ibb.co/zH4jmRd/zoom.png=900x900)
 
 
