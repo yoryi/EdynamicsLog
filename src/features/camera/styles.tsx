@@ -10,6 +10,8 @@ interface Styles {
   buttonCamera: ViewStyle;
   containerCounter: ViewStyle;
   containerSlider: ViewStyle;
+  optionLeft: ViewStyle;
+  optionRight: ViewStyle;
 }
 
 const styles: Styles = StyleSheet.create({
@@ -66,6 +68,14 @@ const styles: Styles = StyleSheet.create({
     height: 80,
     flexDirection: 'row',
     position: 'relative',
+  },
+  optionLeft: {
+    flexDirection: 'row',
+    paddingLeft: 15,
+  },
+  optionRight: {
+    flexDirection: 'row',
+    paddingRight: 15,
   },
 });
 

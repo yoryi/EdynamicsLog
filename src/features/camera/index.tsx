@@ -186,11 +186,11 @@ const CameraScreen = () => {
         <View style={styles.containerCounter}>
           {Counter && <CounterRecording counter={Counter} />}
         </View>
-        <View style={{flexDirection: 'row', paddingLeft: 15}}>
+        <View style={styles.optionLeft}>
           <ButtonOptions iconName={'volume-up'} onEvent={onSound} />
           <ButtonOptions iconName={'60fps-select'} onEvent={onChangeFPS} />
         </View>
-        <View style={{flexDirection: 'row', paddingRight: 15}}>
+        <View style={styles.optionRight}>
           <ButtonOptions iconName={'zoom-in-map'} onEvent={onChangeZoom} />
           <ButtonOptions iconName={'hdr-on'} onEvent={onChangeHDR} />
           <ButtonOptions iconName={'bolt'} onEvent={onChangeFlash} />
