@@ -1,12 +1,18 @@
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useState, useCallback, useRef, SetStateAction} from 'react';
-import type {PhotoFile, VideoFile} from 'react-native-vision-camera';
+import type {
+  PhotoFile,
+  VideoFile,
+  CameraProps,
+} from 'react-native-vision-camera';
 import {
   View,
   Text,
   ActivityIndicator,
   TouchableOpacity,
   SafeAreaView,
+  ScrollView,
+  Image,
 } from 'react-native';
 import {
   Camera,
@@ -25,26 +31,67 @@ import {
   ButtonMain,
   CircularImage,
   CounterRecording,
+  SliderCamera,
+  IndicatorCamera,
 } from '../../components';
 import {MediaCamera} from '../../types';
+import Reanimated, {
+  Extrapolation,
+  interpolate,
+  useAnimatedProps,
+  useSharedValue,
+} from 'react-native-reanimated';
+import {Gesture, GestureDetector} from 'react-native-gesture-handler';
+
+Reanimated.addWhitelistedNativeProps({
+  zoom: true,
+});
+const ReanimatedCamera = Reanimated.createAnimatedComponent(Camera);
 
 const CameraScreen = () => {
   const dispatch = useDispatch();
   const camera = useRef<Camera>(null);
+  const scrollViewRef = useRef(null);
   const microphone = useMicrophonePermission();
   const [cameraPermission] = useCameraPermission();
   const state = useSelector(state => state?.photoQ)?.listImage;
   const [cameraPosition, setCameraPosition] = useState<'front' | 'back'>(
     'back',
   );
+  const device = useCameraDevice(cameraPosition);
   const [fps, setFps] = useState(30);
   const [HDR, setHDR] = useState(false);
   const [sound, setSound] = useState(false);
   const [Counter, setCounter] = useState(false);
+  const [valueZoom, setValueZoom] = useState(1);
+  const [zoomCamera, setZoomCamera] = useState(false);
   const [flash, setFlash] = useState<'on' | 'off'>('off');
-  const device = useCameraDevice(cameraPosition);
   const supportsFlash = device?.hasFlash ?? false;
   const configCamera = useCameraFormat(device, [{photoHdr: HDR, fps}]);
+
+  const zoomOffset = useSharedValue(0);
+  const zoomBegin = useCallback(() => {
+    return (zoomOffset.value = valueZoom);
+  }, []);
+
+  const zoomUpdate = useCallback((event: any) => {
+    const calculeValue = zoomOffset.value * event.scale;
+    const minZoom = device?.minZoom ?? 1;
+    const maxZoom = device?.maxZoom ?? 10;
+    const valueInterpolate = interpolate(
+      calculeValue,
+      [1, 10],
+      [minZoom, maxZoom],
+      Extrapolation.CLAMP,
+    );
+    setValueZoom(valueInterpolate);
+  }, []);
+
+  const gesture = Gesture.Pinch().onBegin(zoomBegin).onUpdate(zoomUpdate);
+  const animatedProps = useAnimatedProps<CameraProps>(
+    () => ({zoom: valueZoom}),
+    [valueZoom],
+  );
 
   const captureMedia = useCallback(
     async (
@@ -120,6 +167,7 @@ const CameraScreen = () => {
 
   const onSound = () => setSound(!sound);
   const onChangeHDR = () => setHDR(!HDR);
+  const onChangeZoom = () => setZoomCamera(!zoomCamera);
   const onChangeFPS = () => setFps(fps == 30 ? 60 : 30);
   const onChangeFlash = () => setFlash(flash == 'off' ? 'on' : 'off');
   const onChangeCamera = () =>
@@ -144,6 +192,7 @@ const CameraScreen = () => {
           <ButtonOptions iconName={'60fps-select'} onEvent={onChangeFPS} />
         </View>
         <View style={{flexDirection: 'row', paddingRight: 15}}>
+          <ButtonOptions iconName={'zoom-in-map'} onEvent={onChangeZoom} />
           <ButtonOptions iconName={'hdr-on'} onEvent={onChangeHDR} />
           <ButtonOptions iconName={'bolt'} onEvent={onChangeFlash} />
         </View>
@@ -158,18 +207,21 @@ const CameraScreen = () => {
         {!cameraPermission ? (
           <ActivityIndicator size="large" color={Colors.GREEN_APP} />
         ) : (
-          <Camera
-            ref={camera}
-            photo={true}
-            video={true}
-            isActive={true}
-            device={device}
-            style={styles.Camera}
-            format={configCamera}
-            orientation={'portrait'}
-            audio={microphone.hasPermission}
-            photoHdr={configCamera?.supportsPhotoHdr}
-          />
+          <GestureDetector gesture={gesture}>
+            <ReanimatedCamera
+              ref={camera}
+              photo={true}
+              video={true}
+              isActive={true}
+              device={device}
+              style={styles.Camera}
+              format={configCamera}
+              orientation={'portrait'}
+              animatedProps={animatedProps}
+              audio={microphone.hasPermission}
+              photoHdr={configCamera?.supportsPhotoHdr}
+            />
+          </GestureDetector>
         )}
       </View>
     );
@@ -197,11 +249,46 @@ const CameraScreen = () => {
     );
   };
 
+  const onViewableItemsChanged = ({
+    nativeEvent: {
+      contentOffset: {x},
+    },
+  }) => {
+    const zoomValues: {[key: number]: number} = {0: 1, 1: 2, 2: 16};
+    const indexSlider = Math.round(x / 360);
+    setValueZoom(zoomValues[indexSlider as 0 | 1 | 2]);
+  };
+
+  const _valueIndicator = (valorActual: number): number => ({1: 1, 2: 2, 16: 3}[valorActual] || 1);
+  const renderZoom = () => {
+    return (
+      zoomCamera && (
+        <View style={{position: 'relative'}}>
+          <IndicatorCamera Value={_valueIndicator(valueZoom)} />
+          <ScrollView
+            horizontal={true}
+            ref={scrollViewRef}
+            pagingEnabled={true}
+            showsHorizontalScrollIndicator={false}
+            onMomentumScrollEnd={onViewableItemsChanged}>
+            <View
+              style={{height: 80, flexDirection: 'row', position: 'relative'}}>
+              <SliderCamera />
+              <SliderCamera />
+              <SliderCamera />
+            </View>
+          </ScrollView>
+        </View>
+      )
+    );
+  };
+
   const renderUI = () => {
     return (
       <SafeAreaView style={styles.wrapper}>
         {renderHeader()}
         {renderCameraApp()}
+        {renderZoom()}
         {renderBarCamera()}
       </SafeAreaView>
     );
