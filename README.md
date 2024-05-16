@@ -29,6 +29,7 @@ $ npm run android
 - Video
 - Cámara
 - Sonido
+- Zoom
 - HDR (High Dynamic Range)
 - Flash
 - Cambio Camara
