@@ -44,4 +44,5 @@ $ npm run android
 ## Video Aplicación
 
 [Video ANDROID](https://www.youtube.com/watch?v=iWedsgGUndw)
+[Video Zoom](https://www.youtube.com/shorts/egnC6JiSdEI)
 [Video IOS](https://www.youtube.com/shorts/CTBTrqZhsco)
