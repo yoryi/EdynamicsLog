@@ -1,6 +1,5 @@
 import {Text, StyleSheet, View} from 'react-native';
-
-const IndicatorCamera = ({Value = '1'}) => {
+const IndicatorCamera = ({Value = 1}) => {
   return (
     <View style={styles.wrapperIndicator}>
       <Text style={styles.textIndicator}>{'X'+Value}</Text>

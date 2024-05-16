@@ -9,6 +9,7 @@ interface Styles {
   containerOptions: ViewStyle;
   buttonCamera: ViewStyle;
   containerCounter: ViewStyle;
+  containerSlider: ViewStyle;
 }
 
 const styles: Styles = StyleSheet.create({
@@ -60,6 +61,11 @@ const styles: Styles = StyleSheet.create({
     position: 'absolute',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  containerSlider: {
+    height: 80,
+    flexDirection: 'row',
+    position: 'relative',
   },
 });
 

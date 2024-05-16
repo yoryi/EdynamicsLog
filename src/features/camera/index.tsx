@@ -12,7 +12,6 @@ import {
   TouchableOpacity,
   SafeAreaView,
   ScrollView,
-  Image,
 } from 'react-native';
 import {
   Camera,
@@ -259,7 +258,8 @@ const CameraScreen = () => {
     setValueZoom(zoomValues[indexSlider as 0 | 1 | 2]);
   };
 
-  const _valueIndicator = (valorActual: number): number => ({1: 1, 2: 2, 16: 3}[valorActual] || 1);
+  const _valueIndicator = (valorActual: number): number =>
+    ({1: 1, 2: 2, 16: 3}[valorActual] || 1);
   const renderZoom = () => {
     return (
       zoomCamera && (
@@ -271,8 +271,7 @@ const CameraScreen = () => {
             pagingEnabled={true}
             showsHorizontalScrollIndicator={false}
             onMomentumScrollEnd={onViewableItemsChanged}>
-            <View
-              style={{height: 80, flexDirection: 'row', position: 'relative'}}>
+            <View style={styles.containerSlider}>
               <SliderCamera />
               <SliderCamera />
               <SliderCamera />
